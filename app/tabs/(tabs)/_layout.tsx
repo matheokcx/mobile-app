@@ -1,38 +1,25 @@
 import React from 'react';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { Tabs } from 'expo-router';
 import { useClientOnlyValue } from '@/components/useClientOnlyValue';
+import { Entypo, Feather } from "@expo/vector-icons";
 
-function TabBarIcon(props: {
-  name: React.ComponentProps<typeof FontAwesome>['name'];
-  color: string;
-}) {
-  return <FontAwesome size={18} style={{ marginBottom: -3 }} {...props} />;
-}
-
-export default function TabLayout() {
+const TabLayout = ()=> {
   return (
-    <Tabs
-      screenOptions={{
-        // Disable the static render of the header on web
-        // to prevent a hydration error in React Navigation v6.
-        headerShown: useClientOnlyValue(false, true),
-      }}
-    >
-      <Tabs.Screen
-        name="tab1"
-        options={{
-          title: 'Tab 1',
-          tabBarIcon: ({ color }) => <TabBarIcon name="star-o" color={color} />,
-        }}
+    <Tabs screenOptions={{headerShown: useClientOnlyValue(false, true)}}>
+      <Tabs.Screen name="home"
+                   options={{
+                       title: 'Accueil',
+                       tabBarIcon: ({ color }) => <Feather name="home" size={24} color="black" />,
+                   }}
       />
-      <Tabs.Screen
-        name="tab2"
-        options={{
-          title: 'Tab 2',
-          tabBarIcon: ({ color }) => <TabBarIcon name="star-o" color={color} />,
-        }}
-      />
+        <Tabs.Screen name="addItem"
+                     options={{
+                         title: 'Ajouter',
+                         tabBarIcon: ({ color }) => <Entypo name="add-to-list" size={24} color="black" />,
+                     }}
+        />
     </Tabs>
   );
 }
+
+export default TabLayout;
