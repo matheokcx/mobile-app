@@ -1,7 +1,7 @@
 import React from 'react';
 import { Tabs } from 'expo-router';
 import { useClientOnlyValue } from '@/components/useClientOnlyValue';
-import { Entypo, Feather } from "@expo/vector-icons";
+import {Entypo, Feather, MaterialIcons} from "@expo/vector-icons";
 
 const TabLayout = ()=> {
   return (
@@ -16,6 +16,12 @@ const TabLayout = ()=> {
                      options={{
                          title: 'Ajouter',
                          tabBarIcon: ({ color }) => <Entypo name="add-to-list" size={24} color="black" />,
+                     }}
+        />
+        <Tabs.Screen name="profile"
+                     options={{
+                         title: 'Profil',
+                         tabBarIcon: ({ color }) => <MaterialIcons name="account-circle" size={24} color="black" />,
                      }}
         />
     </Tabs>
